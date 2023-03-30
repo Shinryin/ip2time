@@ -14,6 +14,5 @@ ip2time is a Python tool that automatically detects and updates your system's ti
 
 - To use ip2time after BUILDING it, simply run the script in your terminal or command prompt. Make sure you have the required Python packages installed (e.g., ctypes, platform, and requests). The script will then detect your external IP, determine your timezone, and update your system's timezone accordingly.
 
-Requirements
-Python 3.x
-ctypes, platform, and requests packages
+Requirements:
+Python 3.x / ctypes, platform, and requests packages
