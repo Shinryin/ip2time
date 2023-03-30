@@ -1,5 +1,5 @@
 # ip2time
-ip2time is a Python tool that automatically detects and updates your system's timezone based on your external IP address. This tool is especially useful for those who travel frequently or use VPNs, as it saves time and effort required to manually change the timezone.
+ip2time is a Python tool that automatically detects and updates your system's timezone based on your external IP address. This tool is especially useful for those who travel frequently or use VPNs, as it saves time and effort required to manually change the timezone. I made this program after reading https://gist.github.com/mrled/8d29fde758cfc7dd0b52f3bbf2b8f06e, and ran into the same issues myself. ip2time features a very comprehensive custom mapping of IANA timezones -> Windows timezones. Feel free to use this for any of your projects!
 
 # Features
 - Detects your external IP address.
