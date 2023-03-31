@@ -3,6 +3,7 @@ import ctypes
 import requests
 import subprocess
 import json
+import time
 
 print("ip2time - https://github.com/Shinryin/ip2time - V1.0.0")
 print("Please report any bugs by creating a new issue on GitHub.")
@@ -121,11 +122,17 @@ def get_external_ip():
     return response.json()['ip']
 
 def get_timezone(ip):
-    response = requests.get(f"https://ipapi.co/{ip}/json/")
-    data = response.json()
-    timezone = data['timezone']
-    location = (data['city'], data['region'], data['country'])
-    return (timezone, location)
+    while True:
+        try:
+            response = requests.get(f"https://ipapi.co/{ip}/json/", timeout=5)
+            data = response.json()
+            timezone = data['timezone']
+            location = (data['city'], data['region'], data['country'])
+            return (timezone, location)
+        except Exception as e:
+            print(f"Error getting timezone: {e}")
+            print("Retrying in 3 seconds...")
+            time.sleep(3)
 
 def set_timezone(timezone):
     system = platform.system()
@@ -151,8 +158,11 @@ def main():
         ip = get_external_ip()
         print(f"External IP: {ip}")
 
+        start_time = time.monotonic()
         timezone = get_timezone(ip)
-        print(f"Timezone: {timezone[0]}")
+        end_time = time.monotonic()
+        ping_time = round((end_time - start_time) * 1000)
+        print(f"Timezone: {timezone[0]} (ping: {ping_time} ms)")
 
         set_timezone(timezone)
         print(f"Timezone updated successfully to {timezone[0]}")
