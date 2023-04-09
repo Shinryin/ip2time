@@ -118,16 +118,16 @@ timezone_mapping = {
 }
 
 def get_external_ip():
-    response = requests.get("https://api.ipify.org?format=json")
-    return response.json()['ip']
+    response = requests.get("http://ip-api.com/json/")
+    return response.json()['query']
 
 def get_timezone(ip):
     while True:
         try:
-            response = requests.get(f"https://ipapi.co/{ip}/json/", timeout=5)
+            response = requests.get(f"http://ip-api.com/json/{ip}", timeout=5)
             data = response.json()
             timezone = data['timezone']
-            location = (data['city'], data['region'], data['country'])
+            location = (data['city'], data['regionName'], data['country'])
             return (timezone, location)
         except Exception as e:
             print(f"Error getting timezone: {e}")
@@ -172,5 +172,5 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
+
 input("Press enter to close...")
