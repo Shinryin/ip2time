@@ -51,6 +51,7 @@ timezone_mapping = {
     'Europe/Warsaw': 'Central Europe Standard Time',
     'Europe/Prague': 'Central Europe Standard Time',
     'Europe/Athens': 'GTB Standard Time',
+    'Europe/Bucharest': 'GTB Standard Time',
     'Europe/Helsinki': 'FLE Standard Time',
     'Pacific/Auckland': 'New Zealand Standard Time',
     'Pacific/Fiji': 'Fiji Standard Time',
